@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <title> hCentive Careers </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- styles -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/app.css" type="text/css" media="screen">
+    </head>
+    <body> 
+        <a class="sr-only sr-only-focusable" href="#main">Skip to main content</a>
+        <div class="main" id="main">
+            <header class="navbar">
+                <div class="navbar-header">
+                    <a href="/"><img src="../assets/images/logo.png" /></a>
+                </div>
+                <div class="user-section pull-right">
+                    <a href="#">test@test.com
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+                </div>
+            </header>
+            <div class="content">
+                <div class="box">
+                    <div class="head-section clearfix gutterLR15">
+                        <h1 class=" pull-left">Job Detail</h1>
+                        <button class="btn btn-link pull-right">Go back to job listing</button>
+                    </div>
+                    <hr>
+                    <!-- Form section starts here -->
+                    <div class="form-section job-detail">
+                        <div class="row">
+                            <div class="col-sm-8 job-inner">
+                                <h2 class="pull-left">Lead Software Engineer </h2><button class="btn btn-secondary btn-lg pull-right">Get started with test</button>
+                                <div class="clearfix"></div>
+                                <p class="gray-text"><i class="fa fa-calendar fa-2" aria-hidden="true"></i> Posted on 24 Sep</p>
+                                <hr>
+                                <ul><li>Plans, directs and manages the daily operations of an TechOps department.</li><li>Responsible for operations of Corporate/Development/QA/Production environments and peripheral information systems</li><li>Should have good knowledge of Unix, Linux, Application Servers (Tomcat, apache, Jboss, Weblogic etc)</li><li>Should have knowledge of high availability, scalability and failover of application servers</li><li>Must have worked on deployments of java based applications</li><li>Must have participated in disaster recovery site readiness</li><li>Leads a team of DevOps professional who troubleshoot TechOps issues.</li><li>Implements policies and procedures regarding how problems are identified, received, documented, distributed, and correction.</li><li>Ability to gain an understanding of operational processes and needs as it relates to technology and communication equipment and work effectively with operational staff in the coordination of IT projects and identifying operational technology needs</li><li>Ensures maximum issue resolutions in minimum time.</li><li>Evaluates new information systems products or services and suggests changes to existing products or services to better aide the end use.</li><li>Ensures proper functioning of company’s information processing system and makes upgrades as necessary.</li><li>Recommends appropriate maintenance strategies to ensure uninterrupted systems usage and proper backup and recovery procedures are followed.</li><li>Monitors security compliance in accordance with hCentive standards, policies and procedures.</li><li>Keeps current with technology updates to ensure technology opportunities are taken advantage of, whether the opportunities relate to speed, improved processing, cost efficiencies, etc.</li><li>Serves as the technical and communications liaison to and from stakeholders and office key users for communications, initiatives, needs assessments, etc.</li><li>Year of experience – 6-10 years</li><li>Degree – B.E or Masters in CSE, Electronics or MCA.</li></ul>
+                                <button class="btn btn-secondary btn-lg pull-right">Get started with test</button>
+                            </div>
+                            <div class="col-sm-4 related-jobs">
+                                <h2>Your Application Status</h2>
+                                
+                            </div>
+                        </div>    
+                    </div>
+            
+                        
+                    </div>
+                    </div><!-- Form section ends here -->
+                </div>
+
+                
+            </div>
+        </div>
+
+       
+
+        
+        
+    </body>
+</html>

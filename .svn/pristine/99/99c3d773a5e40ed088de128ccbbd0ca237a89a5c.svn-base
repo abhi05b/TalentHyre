@@ -1,0 +1,79 @@
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+var mongoose = require('mongoose'),
+  Schema = mongoose.Schema;
+
+/**
+ * Candidate Schema
+ */
+var CandidateSchema = new Schema({
+  name: {
+    type: String,
+    default: '',
+    required: 'Please fill Candidate name',
+    trim: true
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
+  skills: [{  
+    expertiseLevel:{
+        type : Number
+     },
+     experience:{
+        type : Number
+     },
+     name:{
+        type : String
+     }
+   }],
+  experience: {
+    type : Number
+  },
+  emailId: {
+     type: String
+  },
+  location: {
+      countryCode : {
+        type : String
+      },
+      city : {
+        type : String
+      }
+  },
+  position: {
+      designation : {
+        type : String
+      },
+      workSummary :{
+        type : String
+      },
+      company : {
+        type : String
+      },
+      size : {
+        type :String
+      },
+      startDate : {
+          month : String,
+          year : Number
+      },
+      city : {
+          type : String
+      },
+      country : {
+        type : String
+      }
+  },
+  profileImageURL : String  
+});
+
+mongoose.model('Candidate', CandidateSchema);

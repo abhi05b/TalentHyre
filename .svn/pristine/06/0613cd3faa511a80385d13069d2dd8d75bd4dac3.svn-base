@@ -1,0 +1,112 @@
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+var path = require('path'),
+  mongoose = require('mongoose'),
+  Candidate = mongoose.model('Candidate'),
+  Job = mongoose.model('Job'),
+  JobCandidateScore = mongoose.model('JobCandidateScore'),
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+  JobCandidateStatus = mongoose.model('JobCandidateStatus'),
+  Promise = require('promise'),
+  _ = require('lodash'),
+  recommendationService = require(path.resolve('./modules/core/server/services/recommendation.server.service'));
+
+  exports.jobs = function(req, res){
+    Job.find({status: 'active'}).sort('-created').exec()
+    .then(function(jobs) {
+      var promises = [];
+      jobs.forEach(function(job){
+        var promise = new Promise(function(resolve, reject){
+            JobCandidateScore.find({job: job._id}).exec(function(err, jobCandidateScores){
+              if(err){
+                reject(err);
+              }
+              job = job.toObject();
+              job.candidateCount = jobCandidateScores.filter(function(jobCandidateScore){
+                return jobCandidateScore.score;
+              }).length;
+              resolve(job);
+          });
+        });
+        promises.push(promise);
+      });
+      return Promise.all(promises);
+    })
+    .then(function(jobs){
+      res.jsonp(jobs);
+    })
+    .catch(function(err){
+      res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+      });
+    })
+  };
+
+  exports.candidatesForJob = function(req, res){
+    JobCandidateScore.find({job : req.query.jobId}).sort({'score': -1}).populate('candidate').exec()
+    .then(function(jobCandidateScores){
+      var promises = [];
+      jobCandidateScores.forEach(function(jobCandidateScore){
+        var promise = new Promise(function(resolve, reject){
+            JobCandidateStatus.find({'candidate' : jobCandidateScore.candidate,'job' : req.query.jobId}).exec(function(err, jobCandidateStatus){
+              if(err){
+                reject(err);
+              }
+              jobCandidateScore = jobCandidateScore.toObject();
+              jobCandidateScore.status = jobCandidateStatus[0].status;
+              resolve(jobCandidateScore);
+          });
+        });
+        promises.push(promise);
+      });
+      return Promise.all(promises);
+    })
+    .then(function(jobCandidateScores){
+      res.jsonp(jobCandidateScores);
+    })
+    .catch(function(err){
+      res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+      });
+    })
+  }
+
+  exports.jobsForCandidate = function(req, res){
+    JobCandidateScore.find({candidate : req.query.candidateId}).sort({'score': -1}).populate('job').exec()
+    .then(function(jobCandidateScores){
+      var promises = [];
+      jobCandidateScores.forEach(function(jobCandidateScore){
+        var promise = new Promise(function(resolve, reject){
+            JobCandidateStatus.find({'candidate' : req.query.candidateId,'job' : jobCandidateScore.job}).exec(function(err, jobCandidateStatus){
+              if(err){
+                reject(err);
+              }
+              else{
+                jobCandidateScore = jobCandidateScore.toObject();
+                jobCandidateScore.status = (jobCandidateStatus.length !== 0) ? jobCandidateStatus[0].status : "";
+                resolve(jobCandidateScore);
+              }
+              
+          });
+        });
+        promises.push(promise);
+      });
+      return Promise.all(promises);
+    })
+    .then(function(jobCandidateScores){
+      res.jsonp(jobCandidateScores);
+    })
+    .catch(function(err){
+      res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+      });
+    })
+  }
+
+  exports.renderHrIndex = function (req, res) {
+     return res.render('modules/hrs/server/views/index');
+ 
+  };

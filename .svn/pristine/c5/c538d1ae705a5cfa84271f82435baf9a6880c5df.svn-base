@@ -1,0 +1,35 @@
+<div class="head-section clearfix gutterLR15">
+    <h1 class=" pull-left">Applicants for {{vm.job.title}}</h1>
+    <button class="btn btn-link view-job" data-toggle="modal" data-target=".bs-example-modal-lg">View Job</button>
+</div>
+<hr>
+<!-- Form section starts here -->
+<div class="form-section">
+    <div class="clearfix">
+        <h2 class="pull-left">List of Applicant(s)</h2>
+        <button class="btn btn-link pull-right" ui-sref="hr.dashboard">Go back to job listing</button>
+    </div>
+    <hr>
+
+
+    <div class="card hovercard" ng-repeat="jobCandidateScore in vm.jobCandidateScores">
+        <div class="cardheader">
+
+        </div>
+        
+        <div ng-if="jobCandidateScore.candidate.profileImageURL" class="avatar">
+            <img alt="" src="{{jobCandidateScore.candidate.profileImageURL}}"> 
+        </div>
+        <div ng-if="!jobCandidateScore.candidate.profileImageURL" class="avatar">
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+        <div class="info">
+            <div class="title">
+                <a target="_blank">{{jobCandidateScore.candidate.name}}</a>
+            </div>
+            <div class="desc">{{jobCandidateScore.candidate.position.designation}}</div>
+            <div class="desc">{{jobCandidateScore.candidate.position.company}}</div>
+            <div class="desc">Working since: {{jobCandidateScore.candidate.position.startDate.month}} {{jobCandidateScore.candidate.position.startDate.year}}</div>
+        </div>
+    </div>       
+</div>

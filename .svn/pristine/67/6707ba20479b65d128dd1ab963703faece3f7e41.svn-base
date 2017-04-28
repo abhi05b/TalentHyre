@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <title> hCentive Careers </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- styles -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/app.css" type="text/css" media="screen">
+    </head>
+    <body class="dashboard fixed-left fixed-top"> 
+        <a class="sr-only sr-only-focusable" href="#main">Skip to main content</a>
+        <div class="" id="main">
+            <header class="navbar navbar-fixed-top container-fluid">
+                <div class="navbar-header ">
+                    <a href="/" class="logo"><img src="../assets/images/logo-sm.png" /></a>
+                </div>
+                <div class="user-section pull-right">
+                    <a href="#">test@test.com
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+                </div>
+            </header>
+            <div class="" id="col-left">
+                <ul class="main-menu">
+            <li class="withripple">
+              <a class="router-link-active" href="/dashboard"><i class="fa fa-dashboard"></i><span class="text">Dashboard</span></a>
+            </li>
+            <li class="withripple">
+              <a class="" href="/badges"><i class="fa fa-suitcase" aria-hidden="true"></i><span class="text">Job(s)</span></a>
+            </li>
+            <li class="withripple">
+              <a class="" href="#"><i class="fa fa-upload" aria-hidden="true"></i><span class="text">Upload Question(s)</span></a>
+            </li>
+            
+            <li class="withripple active">
+              <a class="" href="/budget"><i class="fa fa-users" aria-hidden="true"></i><span class="text">View Applicant(s)</span></a>
+            </li>
+            
+          </ul>
+            </div>
+            <div id="col-right">
+                <div class="content">
+                <div class="box">
+                    <div class="head-section clearfix gutterLR15">
+                        <h1 class=" pull-left">Applicants for Lead Software Engineer</h1>
+                        <button class="btn btn-link view-job" data-toggle="modal" data-target=".bs-example-modal-lg">View Job</button>
+                    </div>
+                    <hr>
+                    <!-- Form section starts here -->
+                    <div class="form-section">
+                        <div class="clearfix">
+                        <h2 class="pull-left">List of Applicant(s)</h2>
+                        <button class="btn btn-link pull-right">Go back to job listing</button>
+                    </div>
+                    <hr>
+                        <table class="table"> 
+                            <thead> 
+                                <tr> 
+                                    <th>Name</th> 
+                                    <th>Experience</th> 
+                                    <th>Current Organization</th> 
+                                    
+                                    
+                                    <th>Status</th> 
+                                    <th>Action</th>
+                                </tr> 
+                            </thead> 
+                            <tbody>
+                                <tr> 
+                                   
+                                    <td>Adam Smith</td> 
+                                    <td>4-8 years</td>
+                                    
+                                    <td>hCentive, Inc.</td> 
+                                    <td>Test completed</td>
+                                    <td><a href="#" class="applicants-count btn btn-primary">View<i class="fa fa-chevron-circle-right fa-3" aria-hidden="true"></i></a></td>
+                                </tr> 
+                                <tr> 
+                                    
+                                    <td>Vikram Singh</td> 
+                                    <td>6-10 years</td>
+                                    
+                                    <td>Snapdeal</td> 
+                                    <td>In Progress</td>
+                                    <td><a href="#" class="applicants-count btn btn-primary">View<i class="fa fa-chevron-circle-right fa-3" aria-hidden="true"></i></a></td>
+                                    
+                                </tr> 
+                                <tr> 
+                                   
+                                    <td>Aditya Ahuja</td> 
+                                    <td>4-8 years</td>
+                                  
+                                    <td>PayTM</td> 
+                                    <td>Test not completed</td>
+                                    <td><a href="#" class="applicants-count btn btn-primary">View<i class="fa fa-chevron-circle-right fa-3" aria-hidden="true"></i></a></td>
+                                </tr> 
+                                <tr> 
+                                    
+                                    <td>Adam Smith</td> 
+                                    <td>6-10 years</td>
+                                   
+                                    <td>Xebia</td> 
+                                    <td>Test completed</td>
+                                    <td><a href="#" class="applicants-count btn btn-primary">View<i class="fa fa-chevron-circle-right fa-3" aria-hidden="true"></i></a></td>
+                                </tr> 
+                                <tr> 
+                                   
+                                    <td>Techops Lead</td> 
+                                    <td>4-8 years</td>
+                                  
+                                    <td>HCL</td> 
+                                    <td>Rejected</td>
+                                    <td><a href="#" class="applicants-count btn btn-primary">View<i class="fa fa-chevron-circle-right fa-3" aria-hidden="true"></i></a></td>
+                                </tr> 
+                                <tr> 
+                                    
+                                    <td>Devops Expert</td> 
+                                    <td>6-10 years</td>
+                                  
+                                    <td>Make My Trip</td> 
+                                    <td>Test not completed</td>
+                                    <td><a href="#" class="applicants-count btn btn-primary">View<i class="fa fa-chevron-circle-right fa-3" aria-hidden="true"></i></a></td>
+                                </tr> 
+                            </tbody> 
+                        </table>   
+                        <div class="clearfix text-center">    
+                        <nav aria-label="..." class="">
+                          <ul class="pagination">
+                            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                            
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                              <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                    </div>
+                        </div>
+                    </div><!-- Form section ends here -->
+                </div>
+                
+                <footer class="footer container-fluid"><p class="pull-right">Happy Coding! Geek Arrest 2016 by Exception Handlers.</p></footer> 
+            </div>
+            
+            </div>
+        </div>
+
+       <!-- Modal -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Job Description</h4>
+      </div>
+      <div class="modal-body">
+        <ul><li>Plans, directs and manages the daily operations of an TechOps department.</li><li>Responsible for operations of Corporate/Development/QA/Production environments and peripheral information systems</li><li>Should have good knowledge of Unix, Linux, Application Servers (Tomcat, apache, Jboss, Weblogic etc)</li><li>Should have knowledge of high availability, scalability and failover of application servers</li><li>Must have worked on deployments of java based applications</li><li>Must have participated in disaster recovery site readiness</li><li>Leads a team of DevOps professional who troubleshoot TechOps issues.</li><li>Implements policies and procedures regarding how problems are identified, received, documented, distributed, and correction.</li><li>Ability to gain an understanding of operational processes and needs as it relates to technology and communication equipment and work effectively with operational staff in the coordination of IT projects and identifying operational technology needs</li><li>Ensures maximum issue resolutions in minimum time.</li><li>Evaluates new information systems products or services and suggests changes to existing products or services to better aide the end use.</li><li>Ensures proper functioning of company’s information processing system and makes upgrades as necessary.</li><li>Recommends appropriate maintenance strategies to ensure uninterrupted systems usage and proper backup and recovery procedures are followed.</li><li>Monitors security compliance in accordance with hCentive standards, policies and procedures.</li><li>Keeps current with technology updates to ensure technology opportunities are taken advantage of, whether the opportunities relate to speed, improved processing, cost efficiencies, etc.</li><li>Serves as the technical and communications liaison to and from stakeholders and office key users for communications, initiatives, needs assessments, etc.</li><li>Year of experience – 6-10 years</li><li>Degree – B.E or Masters in CSE, Electronics or MCA.</li></ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+      <script src="../assets/js/vendor/jquery.min.js"></script>
+        <script src="../assets/js/vendor/bootstrap.min.js"></script>  
+    </body>
+</html>

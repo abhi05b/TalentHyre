@@ -1,0 +1,37 @@
+<div class="head-section clearfix gutterLR15">
+    <h1 class=" pull-left">Applicants for {{vm.job.title}}</h1>
+    <button class="btn btn-link view-job" data-toggle="modal" data-target=".bs-example-modal-lg">View Job</button>
+</div>
+<hr>
+<!-- Form section starts here -->
+<div class="form-section">
+    <div class="clearfix">
+        <h2 class="pull-left">List of Applicant(s)</h2>
+        <!-- <button class="btn btn-link pull-right" ui-sref="hr.dashboard">Go back to job listing</button> -->
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4" ng-repeat="applicant in vm.applicants">
+            <div class="card hovercard">
+                <div class="cardheader">
+
+                </div>
+                
+                <div ng-if="applicant.profileImageURL" class="avatar">
+                    <img alt="" src="{{applicant.profileImageURL}}"> 
+                </div>
+                <div ng-if="!applicant.profileImageURL" class="avatar">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a ng-href="/hr/candidate-detail/{{applicant._id}}">{{applicant.name}}</a>
+                    </div>
+                    <div class="desc">{{applicant.position.designation}}</div>
+                    <div class="desc">{{applicant.position.company}}</div>
+                    <div class="desc">Working since: {{applicant.position.startDate.month}} {{applicant.position.startDate.year}}</div>
+                </div>
+            </div>       
+        </div>
+    </div>
+</div>

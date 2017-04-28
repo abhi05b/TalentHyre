@@ -1,0 +1,74 @@
+<div class="head-section clearfix gutterLR15">
+                        <h1 class=" pull-left">{{vm.job._id ? 'Edit Job' : 'Create New Job'}}</h1>
+
+                    </div>
+                    <hr>
+                    <div class="form-section">
+  <div class="col-md-6">
+    <form name="vm.form.jobForm" class="form-horizontal" ng-submit="vm.save(vm.form.jobForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" ng-class="{'has-error' : vm.form.jobForm.title.$invalid && vm.form.jobForm.title.$touched}">
+          <label class="col-sm-3 control-label" for="name">Title</label>
+          <div class="col-sm-9">
+          <input name="title" type="text" ng-model="vm.job.title" id="name" class="form-control" required>
+          </div>
+
+        </div>
+        <div class="form-group" ng-class="{'has-error' : vm.form.jobForm.desc.$invalid && vm.form.jobForm.desc.$touched}">
+          <label class="col-sm-3  control-label" for="name">Description</label>
+          <div class="col-sm-9">
+          <input name="desc" type="text" ng-model="vm.job.description" id="name" class="form-control"  required>
+        </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error' : vm.form.jobForm.skillMinExp.$invalid && vm.form.jobForm.skillMinExp.$touched}">
+          <label class="control-label col-sm-3" for="name">Minimum Exp</label>
+          <div class="col-sm-9">
+            <input name="skillMinExp" type="number" min="0" ng-model="vm.job.experience.min" id="name" class="form-control"  required>
+           </div>       
+        </div>
+        <div class="form-group" ng-class="{'has-error' : vm.form.jobForm.skillMaxExp.$invalid && vm.form.jobForm.skillMaxExp.$touched}">
+          <label class="control-label col-sm-3" for="name">Maximum Exp</label>
+          <div class="col-sm-9">
+            <input name="skillMaxExp" type="number" min="{{vm.job.experience.min}}" ng-model="vm.job.experience.max" id="name" class="form-control"  required>
+           </div>          
+        </div>
+
+        <div ng-repeat="skill in vm.job.skills">
+        
+        <div class="form-group" ng-class="{'has-error' : vm.form.jobForm.skillName{{$index}}.$invalid && vm.form.jobForm.skillName{{$index}}.$touched}">
+          <label class="control-label col-sm-3" for="name">Skill Name</label>
+          <div class="col-sm-9">
+          <input name="skillName{{$index}}" type="text" ng-model="skill.name" id="name" class="form-control"  required>
+        </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : vm.form.jobForm.skillExpertise{{$index}}.$invalid && vm.form.jobForm.skillExpertise{{$index}}.$touched}">
+          <label class="control-label col-sm-3" for="name">Expertise</label>
+          <div class="col-sm-9">
+          <select name="skillExpertise{{$index}}" id="expertiseLevel" ng-model="skill.expertise" class="form-control" ng-required="true">
+            <option value="">Select</option>
+            <option value="1">Basic</option>
+            <option value="2">Intermediate</option>
+            <option value="3">Expert</option>
+          </select>
+        </div>          
+        </div>
+        
+        </div>
+        <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+        <button type="button" class="btn btn-default" ng-click="vm.job.skills.push({name:null,expertise:null})">+ Add Skills</button>
+      </div>
+      </div>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" ng-click="vm.submitClicked=true" ng-disabled="vm.form.jobForm.$invalid" class="btn btn-primary">{{vm.job._id ? 'Update' : 'Create'}}</button>
+        </div>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

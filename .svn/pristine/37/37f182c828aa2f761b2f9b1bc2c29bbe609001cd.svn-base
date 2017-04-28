@@ -1,0 +1,66 @@
+'use strict';
+
+var mongoose = require('mongoose'),
+  Job = mongoose.model('Job'),
+  Candidate = mongoose.model('Candidate');
+
+exports.sortJobsForCandidate = function(candidate){
+	var candidateSkills =  candidate.skills;
+	return Job.find().sort('-created').exec()
+	.then(function(jobs){
+		return jobs.sort(function(job1, job2){
+			var job1Skills = job1.skills,
+			job2Skills = job2.skills;
+			return skillScore(job1Skills, candidateSkills) - skillScore(job2Skills, candidateSkills);
+		});
+	});
+};
+
+exports.sortCandidatesForJob = function(job){
+	var jobSkills =  job.skills;
+	return Candidate.find().sort('-created').exec()
+	.then(function(candidates){
+		return candidates.sort(function(candidate1, candidate2){
+			var candidate1Skills = candidate1.skills,
+			candidate2Skills = candidate2.skills;
+			return skillScore(jobSkills, candidate1Skills) - skillScore(jobSkills, candidate2Skills);
+		});
+	});
+}
+
+exports.getCandidateScore = function(candidate){
+	var candidateSkills =  candidate.skills;
+	return Job.find().exec()
+	.then(function(jobs){
+		var candidateJobsScore = {};
+		jobs.forEach(function(job){
+			candidateJobsScore[job.name] = skillScore(job.skills, candidateSkills);
+		});
+		return candidateJobsScore;
+	});
+}
+
+
+exports.skillScore = skillScore;
+
+//Match skills which have same name
+//
+function skillScore(jobSkills , candidateSkills){
+	console.log("in skill score");
+	var skillScore = 0;
+	candidateSkills.forEach(function(candidateSkill){
+		var candidateSkillName = candidateSkill.name;
+		var matchingJobSkill = jobSkills.find(function(jobSkill){
+			return jobSkill.name.toLowerCase() === candidateSkillName.toLowerCase();
+		});
+		if(matchingJobSkill){
+			var score = 10;
+			if(candidateSkill.experience >= matchingJobSkill.experience.min && candidateSkill.experience <= matchingJobSkill.experience.max){
+				score += 10;
+			}
+			score += (candidateSkill.expertiseLevel - matchingJobSkill.expertise);
+			skillScore += score;
+		}
+	});
+	return skillScore;
+}

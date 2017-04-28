@@ -1,0 +1,16 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('hrs')
+    .controller('HRCandidateDetailController', HRCandidateDetailController);
+
+  HRCandidateDetailController.$inject = ['$scope', 'candidate', 'candidateApplications', 'NgTableParams'];
+
+  function HRCandidateDetailController($scope, candidate, candidateApplications, NgTableParams) {
+    var vm = this;
+    vm.isHR = true;
+    vm.candidate = candidate;
+    vm.applicationTableParams = new NgTableParams({}, { dataset: candidateApplications});
+  }
+})();

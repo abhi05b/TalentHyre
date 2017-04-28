@@ -1,0 +1,15 @@
+<section>
+  This is the Dashboard view.
+
+  This view will show list of jobs for a candidate
+
+  This view will show:
+  	1. List of jobs for a candidate
+  	{{vm.jobs}}
+  	
+  	2. List of tests he/she has already taken
+  	{{vm.tests}}
+
+</section>
+
+

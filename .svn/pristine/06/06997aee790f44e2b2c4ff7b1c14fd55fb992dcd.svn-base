@@ -1,0 +1,17 @@
+'use strict';
+
+/**
+ * Module dependencies
+ */
+var hrsPolicy = require('../policies/hrs.server.policy'),
+  hrs = require('../controllers/hrs.server.controller');
+
+module.exports = function(app) {
+  // Hrs Routes
+  app.route('/api/hrs/jobs')
+    .get(hrs.jobs);
+
+  app.route('/hr/*')
+    .get(hrs.renderHrIndex);
+
+};

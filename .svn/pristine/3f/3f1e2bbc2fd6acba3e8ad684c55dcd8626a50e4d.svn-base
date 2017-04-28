@@ -1,0 +1,44 @@
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+var path = require('path'),
+  mongoose = require('mongoose'),
+  Candidate = mongoose.model('Candidate'),
+  Job = mongoose.model('Job'),
+  JobCandidateScore = mongoose.model('JobCandidateScore'),
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+  Promise = require('promise'),
+
+  _ = require('lodash'),
+  recommendationService = require(path.resolve('./modules/core/server/services/recommendation.server.service'));
+
+  exports.jobs = function(req, res){
+    Job.find({status: 'active'}).sort('-created').exec()
+    .then(function(jobs) {
+      var promises = [];
+      jobs.forEach(function(job){
+        var promise = new Promise(function(resolve, reject){
+            JobCandidateScore.find({job: job._id}).exec(function(err, jobCandidateScores){
+              if(err){
+                reject(err);
+              }
+              job = job.toObject();
+              job.candidateCount = jobCandidateScores.length;
+              resolve(job);
+          });
+        });
+        promises.push(promise);
+      });
+      return Promise.all(promises);
+    })
+    .then(function(jobs){
+      res.jsonp(jobs);
+    })
+    .catch(function(err){
+      res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+      });
+    })
+  };

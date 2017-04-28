@@ -1,0 +1,67 @@
+.form-control {
+	border-radius: 3px;
+	font-size: 12px;
+	height: 36px;
+	padding: 8px 12px;
+}
+label {
+	font-size: $font-size-base + 1;
+	font-weight: 300;
+	color: #666;
+}
+.custom-form {
+	.form-inline .form-control {
+		width: 62%;
+	}
+}
+.help-block {
+    float: right;
+    width: 38%;
+}
+// .has-error, .has-success {
+// 	.help-block {
+//     	float: right;
+//     	width: 38%;
+// 	}
+// }
+.help-block {
+	display: inline;
+	color: $state-danger-text;
+	font-size: $font-size-base - 1;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.validation-wrap {
+    float: left;
+    min-height: 30px;
+    line-height: 30px;
+    &.check {
+    	width: 18%;
+    }
+    &.text {
+    	width: 82%;
+    }
+}
+.validation-check {
+	padding: 7px 10px;
+	font-weight: 600;
+}
+.validation-text {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 14px;
+}	
+.gutter0 {
+	padding: 0;
+}
+.gutterR0 {
+	padding-right: 0;
+}
+
+// Feedback states
+.has-success {
+  @include form-control-validation($state-success-text, $state-success-border, $state-success-bg);
+}
+.has-error {
+  @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
+}

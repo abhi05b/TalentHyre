@@ -1,0 +1,26 @@
+<div class="" id="col-left">
+  <ul class="main-menu">
+    <li class="withripple active">
+      <a class="router-link-active" ui-sref="hr.dashboard"><i class="fa fa-dashboard"></i><span class="text">Dashboard</span></a>
+    </li>
+    <li class="withripple">
+      <a class="" ui-sref="hr.jobs"><i class="fa fa-suitcase" aria-hidden="true"></i><span class="text">Job(s)</span></a>
+    </li>
+    <li class="withripple">
+      <a class="" ui-sref="hr.questions"><i class="fa fa-upload" aria-hidden="true"></i><span class="text">Upload Question(s)</span></a>
+    </li>
+
+    <li class="withripple">
+      <a class="" ui-sref="hr.applicants"><i class="fa fa-users" aria-hidden="true"></i><span class="text">View Applicant(s)</span></a>
+    </li>
+
+  </ul>
+</div>
+
+<div id="col-right">
+  <div class="content">
+    <div class="box">
+      <ui-view></ui-view>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('candidates')
+    .controller('ProfileController', ProfileController);
+
+  ProfileController.$inject = ['$scope', 'Authentication', 'candidateApplications', 'NgTableParams','CandidatesService'];
+
+  function ProfileController($scope, Authentication, candidateApplications, NgTableParams, CandidatesService) {
+    var vm = this;
+    vm.candidate = Authentication.candidate;
+    vm.applicationTableParams = new NgTableParams({}, { dataset: candidateApplications});
+    
+    vm.submit = function(){
+      var candidate = CandidatesService.query({ id:vm.candidate._id });
+       candidate.$promise.then(function(data) {
+        vm.data = data[0];
+        vm.data.skills.push(vm.skills);
+        CandidatesService.update({ id:vm.candidate. _id}, vm.data);
+        vm.candidate.skills.push(vm.skills);
+        vm.cancel();
+      });
+    };
+
+    vm.cancel = function(){
+      vm.skills = {};
+      vm.addSkill = false;
+    }
+
+    vm.getSkills = function(skills){
+      if(!skills)
+        return null;
+      return skills.map(function(skill){
+        return skill.name;
+      }).join(',');
+    };
+  }
+})();

@@ -1,0 +1,63 @@
+.navbar {
+	margin-bottom: 10px;
+}
+.head-section {
+	h1, h2 {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+.form-section, .video {
+	padding: 0 15px;
+}
+.password-field {
+	position: relative;
+}
+.forgot-link {
+	position: absolute;
+	right: 8px;
+	top: 7px;
+}
+.form-help-text {
+	width: 62%;
+}
+.custom-form .btn-primary {
+	margin-left: 30px;
+}
+.or {
+	border-left: 1px solid $or-border-color;
+	height: 120px;
+	width: 1px;
+	margin: 0 auto;
+	font-size: $font-size-large;
+	span {
+	    background-color: $white;
+	    position: absolute;
+	    top: 45%;
+	    left: 35%;
+	    margin-top: -15px;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	}
+}
+.video {
+	position: relative;
+}
+.video-thumb {
+	position: relative;
+}
+.video-play-btn {
+	background: url('../images/video-play.png') no-repeat center;
+	display: inline-block;
+	height: 125px;
+	width: 125px;
+	position: absolute;
+	top: 34%;
+	left: 39%;
+}
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('candidates')
+    .controller('ProfileController', ProfileController);
+
+  ProfileController.$inject = ['$scope', 'Authentication', 'candidateApplications', 'NgTableParams'];
+
+  function ProfileController($scope, Authentication, candidateApplications, NgTableParams) {
+    var vm = this;
+    vm.candidate = Authentication.candidate;
+    vm.applicationTableParams = new NgTableParams({}, { dataset: candidateApplications});
+  }
+})();

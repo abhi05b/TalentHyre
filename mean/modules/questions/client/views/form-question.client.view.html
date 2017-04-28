@@ -1,0 +1,74 @@
+<div class="head-section clearfix gutterLR15">
+  <h1 class=" pull-left">Upload Question(s)</h1>
+
+</div>
+<hr>
+<!-- Form section starts here -->
+<div class="form-section">
+  <div class="clearfix">
+    <h2 class="pull-left">Upload as many as questions, the system will create more robust test from rich set of questions.</h2>
+    <!-- <button class="btn btn-link pull-right">Go back to job listing</button> -->
+  </div>
+  <hr>
+  <div class="row">
+
+    <div class="col-sm-12">
+      <p class="lead-text offsetB20">We have defined a template for your ease, get started with <a class="btn btn-link btn-download" target="_blank"  href="/api/question/download">Download Template</a> and upload.</p>
+      <form name="vm.form.questionForm" ng-submit="vm.save(vm.form.questionForm.$valid)" novalidate>
+        <div class="form-group file-upload"  show-errors>
+          <input name="questionText" type="file" ng-model="vm.question.questionText" id="questionText" class="form-control file" placeholder="Question Text" onchange = "angular.element(this).scope().saveFileInModel(event)">
+
+          <div class="input-group col-xs-6">
+            <span class="input-group-addon"><i class="fa fa-upload" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" disabled placeholder="Upload Template" id="filePlaceholder">
+            <span class="input-group-btn">
+              <button class="browse btn btn-default" type="button" ng-click="vm.triggerFileDialog()"><i class="fa fa-search" aria-hidden="true"></i> Browse</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+
+          <button class="btn btn-primary" type="submit">Save </button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div><!-- Form section ends here -->
+
+
+
+
+
+
+
+
+<!-- <section>
+  <div class="page-header">
+    <h1>{{vm.question._id ? 'Edit Question' : 'New Question'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <a class="btn btn-link" target="_blank" href="/api/question/download">Download Template</a>
+    <form name="vm.form.questionForm" class="form-horizontal" ng-submit="vm.save(vm.form.questionForm.$valid)" novalidate>
+      <fieldset>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="questionText">Upload Questions</label>
+          <input name="questionText" type="file" ng-model="vm.question.questionText" id="questionText" class="form-control" placeholder="Question Text" onchange = "angular.element(this).scope().saveFileInModel(event)">
+          <div ng-messages="vm.form.questionForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Question name is required.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.question._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section> -->

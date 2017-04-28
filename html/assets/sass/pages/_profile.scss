@@ -1,0 +1,45 @@
+.skill-wrapper {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 10px;
+	min-height: 262px;
+}
+.no-skill {
+	text-align: center;
+	padding-top: 60px;
+	color: #999;
+}
+.skill-view svg {
+    overflow: visible;
+    height: 190px;
+    text-align: center;
+    width: 200px;
+    margin-left: 5px;
+}
+.skill-name {
+	font-size: $font-size-base + 6;
+	font-weight: 600;
+}
+.add-skills {
+	padding-top: 20px;
+}
+.job-detail h2 {
+	margin-top: 0;
+}
+.job-inner {
+	border-right: 1px solid #ddd;
+}
+.questions {
+	.date {
+		width: 100%;
+	}
+	.radio {
+		margin-bottom: 15px;
+	}
+	.date-inner {
+		padding-left: 5px;
+	}
+	h4 {
+		margin: 5px 0 15px 0;
+	}
+}

@@ -1,0 +1,50 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.job._id ? 'Edit Job' : 'New Job'}}</h1>
+  </div>
+  <div class="col-md-10">
+    <form name="vm.form.jobForm" class="form-horizontal" ng-submit="vm.save(vm.form.jobForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Title</label>
+          <input name="title" type="text" ng-model="vm.job.title" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.jobForm.title.$error" role="alert" ng-show="(vm.form.jobForm['title'].$touched || vm.submitClicked)&& vm.form.jobForm['title'].$invalid" >
+            <p class="help-block error-text" ng-message="required">Job Title is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Description</label>
+          <input name="desc" type="text" ng-model="vm.job.description" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.jobForm.desc.$error" role="alert" ng-show="(vm.form.jobForm['desc'].$touched || vm.submitClicked) && vm.form.jobForm['desc'].$invalid" >
+            <p class="help-block error-text" ng-message="required">Job Description is required.</p>
+          </div>
+        </div>
+        <button type="button" ng-click="vm.job.skills = vm.job.skills||[];vm.job.skills.push({name:null,expertise:null})">Add Skills Required</button>
+        <div ng-repeat="skill in vm.job.skills">
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Skill Name</label>
+          <input name="skill.name{{$index}}" type="text" ng-model="skill.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.jobForm['skill.name{{$index}}'].$error" ng-show="(vm.form.jobForm['skill.name{{$index}}'].$touched || vm.submitClicked) && vm.form.jobForm['skill.name{{$index}}'].$invalid"  role="alert">
+            <p class="help-block error-text" ng-message="required">Skill name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Expertise</label>
+          <input name="skill.expertise{{$index}}" type="number" min="1" max="10" ng-model="skill.expertise" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.jobForm['skill.expertise{{$index}}'].$error" ng-show="(vm.form.jobForm['skill.expertise{{$index}}'].$touched || vm.submitClicked) && vm.form.jobForm['skill.expertise{{$index}}'].$invalid" role="alert">
+            <p class="help-block error-text" ng-message="required">Expertise is required.</p>
+            <p class="help-block error-text" ng-message="min">Expertise should be beetween 1-10</p>
+            <p class="help-block error-text" ng-message="max">Expertise should be between 1-10</p>
+          </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" ng-click="vm.submitClicked=true" class="btn btn-default">{{vm.job._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

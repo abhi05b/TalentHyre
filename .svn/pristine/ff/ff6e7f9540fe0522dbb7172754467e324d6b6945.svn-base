@@ -1,0 +1,14 @@
+<section>
+This is the Dashboard view
+
+
+This view contains:
+
+1. List of jobs
+
+{{vm.jobs}}
+2. List of candidates with highest matching scores
+
+{{vm.candidates}}
+
+</section>

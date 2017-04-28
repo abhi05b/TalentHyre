@@ -1,0 +1,23 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('candidates')
+    .controller('DashboardController', DashboardController);
+
+  DashboardController.$inject = ['$scope', 'jobs', 'tests', 'CandidatesService', '$stateParams', 'NgTableParams'];
+
+  function DashboardController($scope, jobs, tests, CandidatesService, $stateParams, NgTableParams) {
+    var vm = this;
+    //vm.jobs = jobs;
+    vm.tests = tests;
+    vm.jobTableParams = new NgTableParams({}, { counts: [],dataset: jobs});
+
+    vm.getSkills = function(skills){
+      return skills.map(function(skill){
+        return skill.name;
+      }).join(',');
+    };
+    
+  }
+})();

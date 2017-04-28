@@ -1,0 +1,22 @@
+// Hrs service used to communicate Hrs REST endpoints
+(function () {
+  'use strict';
+
+  angular
+    .module('hrs')
+    .factory('HrsService', HrsService);
+
+    HrsService.$inject = ['$http'];
+  function HrsService($http){
+    return {
+      getJobs: function(){
+        return $http.get('api/hrs/jobs').then(function(response){
+          return response.data;
+        });
+      },
+      getHighRankingCandidates: function(){
+        return [];
+      }
+    }
+  }
+}());

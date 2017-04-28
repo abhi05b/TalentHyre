@@ -1,0 +1,40 @@
+.date {
+	border-left: 3px solid #ccc;
+	font-weight: 400;
+	width: 73%;
+}
+.date-inner {
+    padding: 5px 5px 5px 10px;
+    background: #f0f0f0;
+    color: #f0f0f0;
+}
+.day {
+	font-size: $font-size-base + 4;
+	color: #666;
+}
+.month {
+	color: #999;
+}
+.table {
+	margin-bottom: 0;
+}
+.table > thead > tr > th {
+	border-bottom: 1px;
+	font-weight: 400;
+	color: #999;
+}
+.table > tbody > tr > th {
+	padding-left: 0;
+}
+.table > tbody > tr > th, .table > tbody > tr > td {
+	font-size: $font-size-base + 1;
+	font-weight: 300;
+	color: #666;
+}
+.table > tbody > tr:hover th , .table > tbody > tr:hover td {
+	background-color: #fafafa;
+	color: #179590;
+	.date {
+		border-left: 3px solid #179590;
+	}
+}

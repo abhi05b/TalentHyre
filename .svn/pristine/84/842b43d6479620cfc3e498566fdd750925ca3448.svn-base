@@ -1,0 +1,16 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('hrs')
+    .controller('DashboardController', DashboardController);
+
+  DashboardController.$inject = ['$scope', 'jobs'];
+
+  function DashboardController($scope, jobs) {
+    var vm = this;
+
+    vm.jobs = jobs;
+
+  }
+})();

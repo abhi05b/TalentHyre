@@ -1,0 +1,34 @@
+<div class="" data-ng-controller="HeaderController">
+
+
+  <div class="navbar-header">
+    <a data-ui-sref="home"><img src="/modules/core/images/logo-sm.png" /></a>
+  </div>
+
+
+  <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+  
+    <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+      <li data-ui-sref-active="active">
+        <a data-ui-sref="authentication.signin">Sign In</a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+      <li class="dropdown" dropdown>
+        <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
+          <i class="fa fa-user" aria-hidden="true"></i><span class="user-name" data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li data-ui-sref-active="active">
+            <a data-ui-sref="profile">Profile</a>
+          </li>
+          <li>
+            <a href="/api/auth/signout" target="_self">Signout</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="header-bg"></div>
+</div>

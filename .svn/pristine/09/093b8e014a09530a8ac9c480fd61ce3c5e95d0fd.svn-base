@@ -1,0 +1,14 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('candidates')
+    .controller('JobDetailController', JobDetailController);
+
+  JobDetailController.$inject = ['$scope', 'job'];
+
+  function JobDetailController($scope, job) {
+    var vm = this;
+    vm.job = job;
+  }
+})();

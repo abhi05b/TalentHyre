@@ -1,0 +1,40 @@
+  <div class="jumbotron text-center">
+    <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div data-ng-controller="HomeController">
+
+            
+            <h1 class="rw-sentence">
+          <span class="heading-top">Looking for challenging career?</span>
+          <br />
+         <!--  <span>creating beautiful butterflies</span>
+          <br />
+          <span>with a silent touch of</span> -->
+          <div class="rw-words rw-words-1">
+            <span>We love to see you grow with us.</span>
+            <span>Take our challenge to get noticed.</span>
+            <span>Here small steps results in giant leaps.</span>
+            <span>What we do here, changes the face of industry.</span>
+
+            <span>See where you fit in this revolution</span>
+          </div>
+        </h1>
+    
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div data-ng-controller="AuthenticationController">
+            <!-- <h3 class="col-md-12 text-center">Sign in using linkedin</h3> -->
+              
+                <!-- <img ng-click="callOauthProvider('/api/auth/linkedin')" ng-src="/modules/users/img/buttons/linkedin.png"> -->
+                <button type="button" class="btn btn-social btn-linkedin pull-right" ng-click="callOauthProvider('/api/auth/linkedin')"><i class="fa fa-linkedin fa-6" aria-hidden="true"></i><span class="pipe"></span><span class="text">Sign in using linkedin</span></button>
+           
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+

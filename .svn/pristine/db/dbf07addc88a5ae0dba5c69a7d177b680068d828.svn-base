@@ -1,0 +1,29 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('hrs')
+    .controller('HRDashboardController', DashboardController);
+
+  DashboardController.$inject = ['$scope', 'jobs', 'NgTableParams','Socket','notifications'];
+
+  function DashboardController($scope, jobs, NgTableParams,Socket,notifications) {
+    var vm = this;
+    vm.jobs = jobs;
+    Socket.on('testCreated',function(data){
+      notifications.showSuccess({
+        message: '<a>'+data.user.displayName + '</a> has submitted test for job <a>'+data.job.title+'</a>',
+        hideDelay: 10000, //ms
+        hide: true //bool
+
+      });
+    });
+    vm.jobTableParams = new NgTableParams({}, { dataset: jobs});
+
+    vm.getSkills = function(skills){
+      return skills.map(function(skill){
+        return skill.name;
+      }).join(',');
+    };
+  }
+})();

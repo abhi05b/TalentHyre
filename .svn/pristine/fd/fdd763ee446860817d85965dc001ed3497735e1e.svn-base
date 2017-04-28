@@ -1,0 +1,22 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('candidates')
+    .controller('JobDetailController', JobDetailController);
+
+  JobDetailController.$inject = ['$scope', 'job', '$http','$state'];
+
+  function JobDetailController($scope, job, $http, $state) {
+    var vm = this;
+    vm.job = job;
+    vm.createTest = createTest;
+    function createTest(job){
+      $http.get('/api/create/test/'+job._id)
+      .then(function(response){
+        var test = response.data;
+        $state.go('tests.view',{'testId': test._id});
+      })
+    }
+  }
+})();

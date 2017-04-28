@@ -1,0 +1,114 @@
+.btn {
+	border-radius: 3px;
+	padding: 6px 20px;
+	border: 0;
+	font-size: 14px;
+	&:hover, &:focus, &.focus {
+		color: $white;
+	}
+}
+.btn-link {
+	&:hover, &:focus, &.focus {
+		color: #225c8e;
+	}	
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border:1px solid #ccc;
+    &:hover, &:focus, &.focus {
+		color: #333;
+	}	
+}
+.btn-primary {
+	background-color: $btn-primary-bg;
+	//text-shadow: 1px 1px 1px #2c789f;
+	&.disabled,
+  	&[disabled]{
+  		border-color: #0a7c78;
+		background-color: #d3d3d3; /* For browsers that do not support gradients */
+	    background: -webkit-linear-gradient(#d3d3d3, #cecece); 
+	    background: -o-linear-gradient(#d3d3d3, #cecece); 
+	    background: -moz-linear-gradient(#d3d3d3, #cecece); 
+	    background: linear-gradient(#d3d3d3, #cecece);
+	    text-shadow: 1px 1px 1px #333;
+  }
+  &:hover, &:focus, &.focus {
+		background-color: #0a7c78;
+	}
+}
+.btn-secondary {
+	background-color: #e5b020;
+	color: #fff;
+	&:hover, &:focus, &.focus {
+		background-color: #d2a01a;
+	}	
+}
+.btn-lg.btn-secondary {
+	font-size: $font-size-base + 2;
+}
+.btn-social {
+	border: 1px solid;
+	font-size: $font-size-base + 2;
+	margin-top: 20px;
+	color: $white;
+	padding: 10px 30px 10px 25px;
+	text-shadow: 1px 1px 1px #4579a4;
+	line-height: 18px;
+	min-width: 170px;
+	text-align: left;
+	text-transform: uppercase;
+	.fa {
+		font-size: $font-size-base + 10;
+		vertical-align: bottom;
+	}
+	.text {
+		line-height: 18px;
+	}
+}
+.pipe {
+    width: 1px;
+    height: 30px;
+    border-left: 1px solid;
+}
+.btn-fb {
+	border-color: #3867ac;
+	background: #86a7d8; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#81a3d6, #6189c6); 
+    background: -o-linear-gradient(#81a3d6, #6189c6); 
+    background: -moz-linear-gradient(#81a3d6, #6189c6); 
+    background: linear-gradient(#81a3d6, #6189c6); 
+    &:hover, &:focus, &.focus {
+    	background: #6f91c3;
+    }
+    .pipe {
+    	border-left-color: #4c71b6;
+    	margin: 0 5px 0 6px;
+    }
+}
+.btn-tw {
+	border-color: #72bdf4;
+	background: #79c2f9; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#99d2fa, #6ab6f7);
+    background: -o-linear-gradient(#99d2fa, #6ab6f7); 
+    background: -moz-linear-gradient(#99d2fa, #6ab6f7); 
+    background: linear-gradient(#99d2fa, #6ab6f7); 
+    &:hover, &:focus, &.focus {
+    	background: #6db7ef;
+    }
+    .pipe {
+    	border-left-color: #57a5f5;
+    	margin: 0 5px;
+    }
+}
+.btn-linkedin {
+    color: #fff;
+    background-color: #007bb6;
+    border-color: rgba(0,0,0,.2);
+    .pipe {
+    	border-left-color: #006699;
+    	margin: 0 5px 0 6px;
+    }
+}
+
+

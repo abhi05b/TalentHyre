@@ -1,0 +1,21 @@
+<div class="head-section clearfix gutterLR15">
+    <h1 class=" pull-left">Job Detail</h1>
+    <button class="btn btn-link pull-right" ui-sref="dashboard">Go back to job listing</button>
+</div>
+<hr>
+<!-- Form section starts here -->
+<div class="form-section job-detail">
+    <div class="row">
+        <div class="col-sm-8 job-inner">
+            <h2 class="pull-left">{{vm.job.title}}</h2><button class="btn btn-secondary btn-lg pull-right">Get started with test</button>
+            <div class="clearfix"></div>
+            <p class="gray-text"><i class="fa fa-calendar fa-2" aria-hidden="true"></i> Posted on {{vm.job.created | date:'dd'}} {{vm.job.create | date:'MM'}}</p>
+            <hr>
+            {{vm.job.description}}
+            <button class="btn btn-secondary btn-lg pull-right">Get started with test</button>
+        </div>
+        <div class="col-sm-4 related-jobs">
+            <h2>Your Application Status</h2>
+        </div>
+    </div>    
+</div>

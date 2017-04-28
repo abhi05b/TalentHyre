@@ -1,0 +1,39 @@
+h1 {
+	font-size: 22px;
+	color: #2486bf;
+}
+h2 {
+	font-size: 18px;
+}
+.gutterLR15 {
+	padding: 0 15px;
+}
+.offsetT0 {
+	margin-top: 0;
+}
+.gutterL0 {
+	padding-left: 0;
+}
+.fa-user {
+	font-size: $font-size-base + 6;
+}
+.fa-info-circle {
+	color: #666;
+	font-size: $font-size-base + 4;
+}
+.help-text h5 {
+	margin-top: 0;
+	color: #666;
+}
+.help-text p{
+	color: #999;
+}
+
+.gray-text {
+	color: #666;
+}
+ul li {
+	list-style-type: disc;
+	font-size: $font-size-base + 2;
+	margin-bottom: 10px;
+}

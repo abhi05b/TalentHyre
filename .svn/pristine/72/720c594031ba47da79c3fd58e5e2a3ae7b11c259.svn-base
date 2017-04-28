@@ -1,0 +1,35 @@
+(function () {
+  'use strict';
+
+  angular
+    .module('candidates')
+    .directive('skills', skills);
+
+  skills.$inject = [/*Example: '$state', '$window' */];
+
+  function skills(/*Example: $state, $window */) {
+    return {
+      templateUrl: '/modules/candidates/views/skills.template.html',
+      restrict: 'E',
+      link: function postLink(scope, element, attrs) {
+        
+      },
+      controller: function(){
+        this.radius = 50;
+        this.gutter = 0;
+        this.skills = [{
+          expertise: 'beginner',
+          experience: 5,
+          name: 'Javascript'
+        },
+        {
+          expertise: 'expert',
+          experience: 5,
+          name: 'Java'
+        }]
+      },
+      bindToController: true,
+      controllerAs: 'skillsController',
+    };
+  }
+})();

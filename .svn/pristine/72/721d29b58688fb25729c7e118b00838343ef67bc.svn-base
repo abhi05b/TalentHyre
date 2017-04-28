@@ -1,0 +1,168 @@
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+var path = require('path'),
+  mongoose = require('mongoose'),
+  Question = mongoose.model('Question'),
+  xlsx = require('node-xlsx'),
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+  _ = require('lodash');
+
+/**
+ * Create a Question
+ */
+exports.create = function(req, res) {
+  //console.log('parsed object',xlsx.parse(req.files.questionText.buffer)[0].data[1]);
+  var xlsSheet = xlsx.parse(req.files.questionText.buffer)[0];
+  var questionArray=[];
+  for(var i=1;i<xlsSheet.data.length;i++){
+    var data = xlsSheet.data[i];
+    questionArray.push({
+      'questionText':data[0],
+      'options': [data[1],data[2],data[3],data[4]],
+      'answer': data[5],
+      'skill':data[6],
+      'expertise': data[7]
+    });
+    // var response = saveQuestion({
+    //   'name':data[0],
+    //   'questionText':data[1]
+    // },req,res);
+    // console.log('response',response);
+    // if(response && response.error){
+    //   return res.status(400).send({
+    //     message: response.error
+    //   });
+    // }
+  }
+  Question.insertMany(questionArray,function(errors,docs){
+    if(errors){
+      return res.status(400).send({
+        message: errors
+      });
+    }else{
+      return res.status(200).send({
+        message: 'success'
+      });
+    }
+    console.log('errors',errors);
+    console.log('docs',docs);
+  });
+
+
+
+};
+
+// function saveQuestion(data,req,res){
+//   //console.log('data',data);
+//   var question = new Question(data);
+//   var response={};
+//   question.save(function(err) {
+//     if (err) {
+//       console.log('error',err);
+//       response = {
+//         error: errorHandler.getErrorMessage(err)
+//       };
+//     }
+//   });
+//   console.log('response',response);
+//   return response;
+// }
+
+/**
+ * Show the current Question
+ */
+exports.read = function(req, res) {
+  // convert mongoose document to JSON
+  var question = req.question ? req.question.toJSON() : {};
+
+  // Add a custom field to the Article, for determining if the current User is the "owner".
+  // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
+  question.isCurrentUserOwner = req.user && question.user && question.user._id.toString() === req.user._id.toString();
+
+  res.jsonp(question);
+};
+
+exports.download = function(req,res){
+  var data= [['Question','Option 1','Option 2','Option 3','Option 4','Answer(1-4)','Skill','Expertise(1-3)']];
+  var buffer = xlsx.build([{name: "Questions", data: data}]);
+  res.setHeader('Content-Type','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  res.send(buffer);
+}
+
+/**
+ * Update a Question
+ */
+exports.update = function(req, res) {
+  var question = req.question;
+
+  question = _.extend(question, req.body);
+
+  question.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(question);
+    }
+  });
+};
+
+/**
+ * Delete an Question
+ */
+exports.delete = function(req, res) {
+  var question = req.question;
+
+  question.remove(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(question);
+    }
+  });
+};
+
+/**
+ * List of Questions
+ */
+exports.list = function(req, res) {
+  Question.find().sort('-created').populate('user', 'displayName').exec(function(err, questions) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(questions);
+    }
+  });
+};
+
+/**
+ * Question middleware
+ */
+exports.questionByID = function(req, res, next, id) {
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).send({
+      message: 'Question is invalid'
+    });
+  }
+
+  Question.findById(id).populate('user', 'displayName').exec(function (err, question) {
+    if (err) {
+      return next(err);
+    } else if (!question) {
+      return res.status(404).send({
+        message: 'No Question with that identifier has been found'
+      });
+    }
+    req.question = question;
+    next();
+  });
+};

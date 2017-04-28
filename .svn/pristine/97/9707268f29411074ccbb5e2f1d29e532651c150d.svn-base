@@ -1,0 +1,37 @@
+<div class="head-section clearfix gutterLR15">
+	<h1 class=" pull-left">Dashboard</h1>
+</div>
+<hr>
+Candidates : {{vm.candidateCount}}
+Questions: {{vm.questionCount}}
+Jobs: {{vm.jobs.length}}
+<!-- Form section starts here -->
+<div class="form-section">
+	<h2>List of Jobs</h2>
+
+	<table ng-table="vm.jobTableParams" class="table">
+	    <tr ng-repeat="job in $data">
+	        <td title="'Date'">
+	        	<div class="date">
+	        		<div class="date-inner">
+	        			<div class="day">{{job.created | date:'dd'}}</div>
+	        			<div class="month">{{job.created | date:'MMM'}}</div>
+	        		</div>
+	        	</div>
+	        </td>
+	        <td title="'Title'">
+	            {{job.title}}
+	        </td>
+	        <td title="'Experience'">
+	            {{job.experience.min}}-{{job.experience.max}} years
+	        </td>
+	        <td title="'Skills'">
+	            {{vm.getSkills(job.skills)}}
+	        </td>
+	       <td title="'Matched Applicant(s)'">
+	           <a ng-href="/hr/job-detail/{{job._id}}" class="applicants-count btn btn-primary">{{job.candidateCount}}<i class="fa fa-chevron-circle-right fa-3" aria-hidden="true"></i></a>
+	        </td>
+	    </tr>
+	</table>
+
+</div>

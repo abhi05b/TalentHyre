@@ -1,0 +1,36 @@
+<div class="head-section clearfix gutterLR15">
+    <h1 class=" pull-left">List of jobs matching your skills!</h1>
+    <button class="btn btn-secondary pull-right">Get Refined Jobs</button>
+</div>
+
+<hr>
+
+<div class="form-section">
+
+	<table ng-table="vm.jobTableParams" class="table">
+	    <tr ng-repeat="job in $data">
+	        <td title="'Date'">
+	        	<div class="date">
+	        		<div class="date-inner">
+	        			<div class="day">{{job.created | date:'dd'}}</div>
+	        			<div class="month">{{job.created | date:'MMM'}}</div>
+	        		</div>
+	        	</div>
+	        </td>
+	        <td title="'Title'">
+	            <a ng-href="/job-detail/{{job._id}}">{{job.title}}</a>
+	        </td>
+	        <td title="'Experience'">
+	            {{job.experience.min}}-{{job.experience.max}} years
+	        </td>
+	        <td title="'Skills'">
+	            {{vm.getSkills(job.skills)}}
+	        </td>
+	       <td title="'Status'">
+	           <button class="btn btn-primary">Apply</button>
+	        </td>
+	    </tr>
+	</table>
+</div>
+
+

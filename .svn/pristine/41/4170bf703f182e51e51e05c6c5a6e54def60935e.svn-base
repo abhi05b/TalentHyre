@@ -1,0 +1,39 @@
+<div class="head-section clearfix gutterLR15">
+                        <h1 class=" pull-left">Test ({{vm.test.job.title}})</h1>
+                        <button class="btn btn-link pull-right" ui-sref="jobs.list">Go back to job listing</button>
+                    </div>
+                    <hr>
+                    <!-- Form section starts here -->
+                    <div class="form-section job-detail questions">
+                        <div class="row">
+                            <div class="col-sm-8 job-inner" >
+                                <h2>Question {{vm.questionIndex +' of '+ vm.test.testQuestions.length}} </h2>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <div class="date"><div class="date-inner"><div class="day">{{vm.questionIndex}}</div></div></div>
+                                    </div>
+                                    <div class="col-sm-11 gutterL0">
+                                        <h4>{{vm.question.questionText}}</h4>
+                                        <div class="radio" ng-repeat="option in vm.question.options track by $index">
+                                          <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios{{$index}}" ng-model="vm.question.candidateAnswer" value={{$index+1}}>
+                                            {{option}}
+                                          </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="clearfix">
+                                    <button class="btn btn-default pull-left" ng-disabled="vm.questionIndex <=  1" ng-click="vm.back()">Back</button>
+                                    <button class="btn btn-primary pull-right" ng-hide="vm.questionIndex >= vm.test.testQuestions.length" ng-click="vm.next()">Next</button>
+                                    <button class="btn btn-primary pull-right" ng-show="vm.questionIndex >= vm.test.testQuestions.length" ng-click="vm.save(true)">Submit</button>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 related-jobs">
+                                <h2>Your Application Status</h2>
+
+                            </div>
+                        </div>
+                    </div>
